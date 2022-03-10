@@ -9,7 +9,6 @@ export default function Card({ player, onPick }) {
               src={player.thumbnail}
               width={300}
               height={200}
-              layout="responsive"
               placeholder="blur"
               blurDataURL="/loading.gif"
           />
