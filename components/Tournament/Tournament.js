@@ -17,24 +17,24 @@ export default function Tournament({ data }) {
     }
 
     useEffect(() => {
-        if (fighters.length === 0) {
-            setPlayers(
-                players.map((player) => {
-                    if (player.status === 'pick') {
-                        return ({
-                            ...player,
-                            status: 'wait',
-                        });
-                    }
+      if (fighters.length === 0) {
+        setPlayers(
+          players.map((player) => {
+            if (player.status === 'pick') {
+              return ({
+                ...player,
+                status: 'wait',
+              });
+            }
 
-                    return player;
-                })
-            );
+            return player;
+          })
+        );
 
-            step.current = step.current / 2;
-            round.current = 1;
-        }
-    }, [players]);
+        step.current = step.current / 2;
+        round.current = 1;
+      }
+    }, [players, fighters.length]);
 
     const onPick = (pickedId, bannedId) => {
         setPlayers(players.map((player) => {
@@ -57,30 +57,30 @@ export default function Tournament({ data }) {
     }
 
     if (fighters.length === 1) {
-        return <Winner winner={fighters[0]} />;
+      return <Winner winner={fighters[0]} />;
     }
 
     return (
       <S.Tournament>
-          <h2>{stepName[step.current]}
-              {step.current !== 2 && (
-                  <span> - Game {round.current}</span>
-              )}
-          </h2>
-          <S.Content>
-              {fighters.length > 0 && (
-                  <>
-                      <Card
-                          player={fighters[0]}
-                          onPick={() => onPick(fighters[0].id, fighters[1].id)}
-                      />
-                      <Card
-                          player={fighters[1]}
-                          onPick={() => onPick(fighters[1].id, fighters[0].id)}
-                      />
-                  </>
-              )}
-          </S.Content>
+        <h2>{stepName[step.current]}
+          {step.current !== 2 && (
+            <span> - Game {round.current}</span>
+          )}
+        </h2>
+        <S.Content>
+          {fighters.length > 0 && (
+            <>
+              <Card
+                player={fighters[0]}
+                onPick={() => onPick(fighters[0].id, fighters[1].id)}
+              />
+              <Card
+                player={fighters[1]}
+                onPick={() => onPick(fighters[1].id, fighters[0].id)}
+              />
+            </>
+          )}
+        </S.Content>
       </S.Tournament>
     );
 }

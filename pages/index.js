@@ -28,6 +28,13 @@ export default function Home() {
               <p>고양이와 관련된 알쓸신잡 중 가장 신기한 사실을 골라보세요!</p>
             </a>
           </Link>
+
+          <Link href="/norwegian">
+            <a className={styles.card}>
+              <h2>노르웨이 숲 고양이 &rarr;</h2>
+              <p>가장 매력적인 노르웨이 숲 고양이를 골라보세요!</p>
+            </a>
+          </Link>
         </div>
       </main>
 

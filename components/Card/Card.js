@@ -7,10 +7,10 @@ export default function Card({ player, onPick }) {
       <S.Card>
           <Image
               src={player.thumbnail}
-              width={300}
-              height={200}
-              placeholder="blur"
-              blurDataURL="/loading.gif"
+              width="100%"
+              height="100%"
+              layout="responsive"
+              objectFit="contain"
           />
           <p>{player.content}</p>
           <button onClick={onPick}>선택</button>
